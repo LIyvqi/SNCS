@@ -4,6 +4,7 @@
 Our method contains two parts, one for topic extraction and the other for community search, the figure below shows the pipeline of the algorithm.
 
 ![pipeline](https://user-images.githubusercontent.com/49839855/143671797-bc55f3e9-da1d-439e-8a29-8281507d96e6.png)
+
 The pipeline of SNCS. 
 For the input heterogeneous graph (HG), we extract topics and reconstruct the graph in parallel. We aggregate topic vectors from the neighbors of vertices that \yq{have} the same type as the query vertex $q$. Following the given meta-structure, we reconstruct a new HG from the input HG and return the meta-paths that can represent this structure on the newly-reconstructed graph. Subsequently, we filter the topics to obtain a specific set of vertices, which is further used to search for communities  on the newly-reconstructed HG by the converted meta-paths e.g., conducting community search by the meta-path-based BatchEcoe[1] algorithm).
 
@@ -38,7 +39,7 @@ The standard data formats for TCS-HINMS input are mainly:
 
 graph, vertex type, edge type, topic vector, Meta-path, Meta-structure.
 
-TCS/Sample.java is a sample for data format.
+SNCS/Sample.java is a sample for data format.
 
 
 ## References
