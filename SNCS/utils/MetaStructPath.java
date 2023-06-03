@@ -10,12 +10,6 @@ public class MetaStructPath {
     public int[] structELayerLen;
 
     public MetaStructPath(int[][] vertex, int[][] edge) {
-        //an example of meta structure
-        //vertex：[[A],[P],[T,V],[P],[A]]
-        //edge:[[1],[2,3],[2,3],[1]]
-        //vertexLayerLen:[1,1,2,1,1]
-        //edgeLayerLen:[1,2,2,1]
-        //structPathLen=4
         this.vertex=vertex;
         this.edge=edge;
         this.structPathLen=edge.length;
