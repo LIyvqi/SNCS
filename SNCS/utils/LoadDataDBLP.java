@@ -80,7 +80,6 @@ public class LoadDataDBLP {
         return graph;
     }
 
-    //读取每个顶点的类别
     public int[] readVertexType(){
         int[] vertexType=new int[vertexNum];
         try {
@@ -102,7 +101,6 @@ public class LoadDataDBLP {
         return vertexType;
     }
 
-    //读取每条边的类别
     public int[] readEdgeType(){
         int[] edgeType=new int[edgeNum];
         try{
@@ -123,7 +121,6 @@ public class LoadDataDBLP {
         return edgeType;
     }
 
-    //读取主题的信息
     public double[][] readUserTopic(){
         System.out.println("userNum is "+userNum);
         double[][] userTopic=new double[userNum][];
