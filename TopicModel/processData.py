@@ -37,7 +37,6 @@ with open(r"../TopicModel/data/AMiner-Paper.txt",'r',encoding="utf-8") as f:
                     authorPaper.get(author).add(paperindex)
                 else:authorPaper.get(author).add(paperindex)
 
-        # 用来得到文章的发表年份
         if line[0:2] == "#t":
             year=line.strip('\n').split(" ")[1]
             if not year.isdigit(): continue
