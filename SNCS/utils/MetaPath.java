@@ -1,10 +1,6 @@
 package utils;
 
-/**
- * @author fangyixiang
- * @date 10 Sep. 2018
- * A meta-path with (pathLen + 1) vertices and pathLen edges
- */
+
 public class MetaPath {
 	public int[] vertex;
 	public int[] edge;
