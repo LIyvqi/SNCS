@@ -49,9 +49,7 @@ import java.util.regex.Pattern;
  *  see <a href="http://www.docjar.com/html/api/java/util/Scanner.java.html">
  *  Scanner.java</a> (NB: Java 6u23 and earlier uses only \r, \r, \r\n).
  *
- *  @author David Pritchard
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+
  */
 public final class In {
 
