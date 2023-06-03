@@ -8,7 +8,6 @@ year_paper=dict()    #ok
 
 paper_content=dict()   # ok
 
-# 处理论文和作者
 with open("D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\paper_author.txt") as f:
     lines=f.readlines()
     for i in range(len(lines)):
@@ -17,7 +16,6 @@ with open("D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\paper_author.txt"
         for j in range(len(line)):
             paper_author.get(i).append(line[j])
 
-# 处理论文和标题及内容
 with open(r"D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\title_content.txt",encoding="utf-8") as f:
     lines=f.readlines()
     for i in range(len(lines)):
@@ -27,21 +25,18 @@ with open(r"D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\title_content.tx
             if (len(line[j])!=0):
                 paper_content.get(i).append(line[j])
 
-# 处理论文和会议的关系
 with open(r"D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\conference.txt") as f:
     lines=f.readlines()
     for i in range(len(lines)):
         line=lines[i].strip('\n')
         paper_venue.update({i:line})
 
-# 处理论文和年月的关系
 with open(r"D:\pythonProject\CSHDataAnalysics\Dblp4core\dataset\year.txt") as f:
     lines=f.readlines()
     for i in range(len(lines)):
         line=lines[i].strip('\n')
         paper_year.update({i:line})
 
-# 完成了顶点Id的转化
 vertex_index_map=dict()
 index=0
 
@@ -105,9 +100,7 @@ for p,y in paper_year.items():
         edge_index_map.update({s_y_p:edgeIndex})
         edgeIndex=edgeIndex+1
 
-# 添加边以及类别，构建一个新图
 graph=[[] for i in range(index)]
-# 1、作者和论文的关系,   论文和作者的关系
 for a,p in author_paper.items():
     a_index=vertex_index_map.get(a)
     for paper in p:
@@ -119,7 +112,6 @@ for a,p in author_paper.items():
         graph[p_index].append(a_index)
         graph[p_index].append(edge_index)
 
-# 2、论文和会议的关系   会议和论文的关系
 for p,v in paper_venue.items():
     p_index=vertex_index_map.get(p)
     v_index=vertex_index_map.get(v)
@@ -129,7 +121,6 @@ for p,v in paper_venue.items():
     graph[v_index].append(p_index)
     graph[v_index].append(edge_index)
 
-# 3、论文和时间的关系   时间和论文的关系
 for p,y in paper_year.items():
     p_index=vertex_index_map.get(p)
     y_index=vertex_index_map.get(y)
