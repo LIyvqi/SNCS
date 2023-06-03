@@ -6,7 +6,6 @@ import utils.MetaStructPath;
 import java.util.*;
 
 /**
- * @author LYQ
  * @Description The aim is to merge the meta-structures in the graph into a virtual node and add flow-constrained vertices and flow-constrained edges,
  * transform the meta-structures into meta-paths, construct a new graph with new node and edge IDs,
  * and record the mapping relationships between the new and old graphs using Map.
@@ -76,7 +75,7 @@ public class GraphRefactor {
     The function is to get the new neighbours of the vertices that match the bifurcation and the type of the corresponding edges, which are present in structNbrMap
      */
         for (int i = 0; i < queryMetaStructPath.structPathLen; i++) {
-            if (queryMetaStructPath.structVLayerLen[i]<queryMetaStructPath.structVLayerLen[i+1]){ //判断是否会出现分岔
+            if (queryMetaStructPath.structVLayerLen[i]<queryMetaStructPath.structVLayerLen[i+1]){ 
                 int edgeType1=-1;
                 int tempVertexType=queryMetaStructPath.vertex[i][0];
                 Set<Integer> temSet=getSet(tempVertexType);
