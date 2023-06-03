@@ -7,21 +7,17 @@ import java.util.Set;
 
 public class Graph {
 
-    private Map<String, Set<String>> st;   //数字字符串，用map来表示图
+    private Map<String, Set<String>> st;   
     private int E;
 
     public Graph() {
         st=new HashMap<>();
     }
 
-    /**
-     * 使用指定的分隔符从指定的文件中得到我们需要的图
-     * @param filename 文件名路径
-     * @param delimiter key和value的分隔符
-     */
+
     public Graph(String filename, String delimiter) {
         st = new HashMap<String, Set<String>>();
-        In in = new In(filename);       //In是一个在算法书上找的文件读取的类
+        In in = new In(filename);      
         while (in.hasNextLine()) {
             String line = in.readLine();
             String[] names = line.split(delimiter);
@@ -33,7 +29,6 @@ public class Graph {
     }
 
     /**
-     * 返回这个图的顶点的数目
      * @return the number of vertices in this graph
      */
     public int V() {
@@ -41,7 +36,6 @@ public class Graph {
     }
 
     /**
-     * 返回这个图的边的数目
      * @return the number of edges in this graph
      */
     public int E() {
@@ -54,7 +48,6 @@ public class Graph {
     }
 
     /**
-     * 返回指定的V的度数
      * @param  v the vertex
      * @return the degree of {@code v} in this graph
      * @throws IllegalArgumentException if {@code v} is not a vertex in this graph
@@ -65,7 +58,6 @@ public class Graph {
     }
 
     /**
-     * 在图中添加顶点v-w的边，如果不存在顶点把顶点也加上，如果存在就只加边
      * @param  v one vertex in the edge
      * @param  w the other vertex in the edge
      */
@@ -78,7 +70,6 @@ public class Graph {
     }
 
     /**
-     * 如果顶点v不存在图中，向图添加顶点v
      * @param  v the vertex
      */
     public void addVertex(String v) {
@@ -87,7 +78,6 @@ public class Graph {
 
 
     /**
-     * 返回 图中顶点的集合
      * @return the set of vertices in this graph
      */
     public Set<String> vertices() {
@@ -95,7 +85,6 @@ public class Graph {
     }
 
     /**
-     * 返回顶点v的邻居
      * @param  v the vertex
      * @return the set of vertices adjacent to vertex {@code v} in this graph
      * @throws IllegalArgumentException if {@code v} is not a vertex in this graph
@@ -106,7 +95,6 @@ public class Graph {
     }
 
     /**
-     * 返回图中是否包含顶点v
      * @param  v the vertex
      * @return {@code true} if {@code v} is a vertex in this graph,
      *         {@code false} otherwise
@@ -116,7 +104,6 @@ public class Graph {
     }
 
     /**
-     * 判断 v-w是否有边相连
      * @param  v one vertex in the edge
      * @param  w the other vertex in the edge
      * @return {@code true} if {@code v-w} is a vertex in this graph,
@@ -131,7 +118,6 @@ public class Graph {
     }
 
     /**
-     * 返回图的字符串表示
      * @return string representation of this graph
      */
     public String toString() {
@@ -151,7 +137,6 @@ public class Graph {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        //输出测试一下图
         Graph graph = new Graph("D:\\JavaProject\\TBCSH_TEST\\src\\resultData\\queryGraph-4-1.txt"," ");
 
         System.out.println(graph);
