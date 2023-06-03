@@ -22,7 +22,7 @@ public class Similarity {
         }
         double sqrta = (double) Math.sqrt(powa_sum);
         double sqrtb = (double) Math.sqrt(powb_sum);
-        den = sqrta * sqrtb+1e-10; //加个小数防止是0的情况出现
+        den = sqrta * sqrtb+1e-10; 
 
         simVal = num / den;
 
@@ -30,25 +30,19 @@ public class Similarity {
     }
 
     public static double pearson(double[] xData, double[] yData) {
-        /*
-        计算两组数的pearson相似度
-         */
+
         if (xData.length != yData.length)
-            throw new RuntimeException("数据不正确！");
+            throw new RuntimeException("error");
         double xMeans;
         double yMeans;
-        double numerator = 0;// 求解皮尔逊的分子
-        double denominator = 0;// 求解皮尔逊系数的分母
+        double numerator = 0;
+        double denominator = 0;
 
         double result = 0;
-        // 拿到两个数据的平均值
         xMeans = getMeans(xData);
         yMeans = getMeans(yData);
-        // 计算皮尔逊系数的分子
         numerator = generateNumerator(xData, xMeans, yData, yMeans);
-        // 计算皮尔逊系数的分母
         denominator = generateDenomiator(xData, xMeans, yData, yMeans);
-        // 计算皮尔逊系数
         result = numerator / denominator;
         return result;
     }
