@@ -67,8 +67,7 @@ public class GraphevaluateDBLP {
             String filename="./resultData/DBLP_tcsh/queryGraph-"+queryId+"-"+queryK+"-"+(int) (theta*100)+".txt";
             String delimiter=" ";
 
-            //关于一些图的评价指标都集成到这个类里面，我们只需要把查询到到的点存下来，然后经过Avgdegree把新的社区的图构建好了
-            //我们在这里改变读取的文件路径，对多个得到的社区进行如下评价
+
             String content="";
             content=content+searchTime+","+queryId+","+queryK+","+(int) (theta*100)+",";
             Graph evaluateGraph = new Graph(filename, delimiter);
@@ -163,7 +162,7 @@ public class GraphevaluateDBLP {
         private  int[] vertexType = null;//vertex -> type
         private  int[] edgeType = null;//edge -> type
         private Set<Integer> community=null;
-        public Map<Integer,Set<Integer>> graphMap=new HashMap<>();  //存储按照元路径搜索的子图
+        public Map<Integer,Set<Integer>> graphMap=new HashMap<>(); 
 
         private int queryId = -1;//the query vertex id
         private MetaPath queryMPath = null;//the query meta-path
@@ -199,17 +198,16 @@ public class GraphevaluateDBLP {
                     List<Set<Integer>> visitList = new ArrayList<Set<Integer>>();
                     for(int i = 0;i <=queryMPath.pathLen;i ++)   visitList.add(new HashSet<Integer>());
                     Set<Integer> pnbSet = new HashSet<Integer>();
-                    findPNeighbors(curId, curId, 0, visitList, pnbSet);    //找到curId的所有pnb，pnbSet也可以认为是边的数目
+                    findPNeighbors(curId, curId, 0, visitList, pnbSet);    
                     count += pnbSet.size();
                     graphMap.put(curId, pnbSet);
                 }
             }
             System.out.println("In the evaluation, for the entire graph, pnb is connected to the construction is completed");
-            System.out.println("The average degree of the whole graph is: " + count * 1.0 / graphMap.size());  //输出的整个图的平均度
+            System.out.println("The average degree of the whole graph is: " + count * 1.0 / graphMap.size());  
             return graphMap;
         }
 
-        //一个深度优先搜索来寻找它的p邻居
         private void findPNeighbors(int startID, int curId, int index, List<Set<Integer>> visitList, Set<Integer> pnbSet) {
             int targetVType = queryMPath.vertex[index + 1], targetEType = queryMPath.edge[index];
             int[] nbArr = graph[curId];
@@ -250,9 +248,7 @@ public class GraphevaluateDBLP {
             int count=0;
             for (int id:queryGraph.keySet())  count+=queryGraph.get(id).size();
 
-            //我们把queryGraph存下来看看，来画以后的图
-            String path="./resultData/DBLP_tcsh/queryGraph-"+queryId+"-"+queryK+"-"+(int) (theta*100)+".txt"; //为什么theta*100再转为int，是因为这样在文件操作中好表示
-            //做分布的话需要画图可以从queryGraph里面读取数据画图
+            String path="./resultData/DBLP_tcsh/queryGraph-"+queryId+"-"+queryK+"-"+(int) (theta*100)+".txt";
 
             File file = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
